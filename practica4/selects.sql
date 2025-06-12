@@ -54,7 +54,7 @@ from prestamos where (dayofyear(fecha_devolucion_max)-dayofyear(fecha_prestamo))
 
 -- Libros donde la cantidad total es exactamente el triple de la cantidad disponible
 select *
-from libros where (cantidad_disponible*3 = cantidad_total);
+from libros where cantidad_disponible*3 = cantidad_total;
 insert into Autores (nombre_autor, apellido_paterno, apellido_materno)
 values
 	('Neal', 'Stephenson', null); -- Criptonomicon
@@ -166,14 +166,24 @@ select * from usuarios where (id_rol = 2 or id_rol = 3) and segundo_apellido is 
 -- Los prestamos realizados entre el 1 de enero de 2024 y el 1 de marzo de 2024 (Operadores especiales)
 select * from prestamos where fecha_prestamo between '2024-01-01' and '2024-03-01';
 
--- Los clientes que cualquiera de sus apellidos sea Blanco, Pérez o García, pero su nombre no sea Fernanda, Claudia, Antonio o Luis (Operadores especiales)
-select * from usuarios where (primer_apellido in ('Blanco', 'Pérez', 'García') or segundo_apellido in ('Blanco', 'Pérez', 'García')) and nombre not in ('Fernanda', 'Claudia', 'Antonio', 'Luis');
+-- Los clientes que cualquiera de sus apellidos sea Blanco, Pérez o García, 
+-- pero su nombre no sea Fernanda, Claudia, Antonio o Luis (Operadores especiales)
+select * from usuarios where 
+(primer_apellido in ('Blanco', 'Pérez', 'García') or 
+segundo_apellido in ('Blanco', 'Pérez', 'García')) and 
+nombre not in ('Fernanda', 'Claudia', 'Antonio', 'Luis');
 
--- Los usuarios que posean un teléfono y alguno de los apellidos es (Martínez, García, Vázquez, Diaz, López, Hernández). (Operadores especiales)
-select * from usuarios where telefono is not null and (primer_apellido in ('Martínez', 'García', 'Vázquez', 'Diaz', 'López', 'Hernández') or segundo_apellido in ('Martínez', 'García', 'Vázquez', 'Diaz', 'López', 'Hernández'));
+-- Los usuarios que posean un teléfono y alguno de los apellidos 
+-- es (Martínez, García, Vázquez, Diaz, López, Hernández). (Operadores especiales)
+select * from usuarios where telefono is not null and 
+(primer_apellido in ('Martínez', 'García', 'Vázquez', 'Diaz', 'López', 'Hernández') or 
+segundo_apellido in ('Martínez', 'García', 'Vázquez', 'Diaz', 'López', 'Hernández'));
 
--- Los clientes que no posean teléfono y tampoco se apelliden Flores, García o Ramírez en alguno de sus apellidos. (Operadores especiales)
-select * from usuarios where telefono is null and (primer_apellido not in ('Flores', 'García', 'Ramírez') and segundo_apellido not in ('Flores', 'García', 'Ramírez'));
+-- Los clientes que no posean teléfono y tampoco se apelliden Flores, 
+-- García o Ramírez en alguno de sus apellidos. (Operadores especiales)
+select * from usuarios where telefono is null and 
+(primer_apellido not in ('Flores', 'García', 'Ramírez') and 
+segundo_apellido not in ('Flores', 'García', 'Ramírez'));
 
 -- Libros con ediciones entre 2 y 5 que no tienen editorial asignada (Operadores especiales)
 select * from libros where (edicion between 2 and 5) and editorial is null;
