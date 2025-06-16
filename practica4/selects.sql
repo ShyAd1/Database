@@ -24,13 +24,13 @@ select concat(email,' ', contrasena,' ',
 from usuarios where id_rol != 2;
 
 -- El nombre completo de las personas y y la fecha_nacimiento de los que su identificador sea par y sea administrador.
-select concat(nombre,' ', primer_apellido,' ', 
-	segundo_apellido, ' ', fecha_nacimiento) 
+select nombre, primer_apellido, 
+	segundo_apellido, fecha_nacimiento
 from usuarios where ((id_usuario % 2) = 0) and (id_rol = 1);
 
 -- El nombre completo de las personas y y la fecha de registro de los que su identificador sea par y no sea bibliotecario.
-select concat(nombre,' ', primer_apellido,' ', 
-	segundo_apellido, ' ', fecha_registro) 
+select nombre, primer_apellido, 
+	segundo_apellido, fecha_registro
 from usuarios where ((id_usuario % 2) = 0) and (id_rol != 2);
 
 -- Regresa la leyenda siguiente para cada registro "La persona [Nombre_completo] se registro el dia [fecha_registro]
@@ -124,9 +124,7 @@ update libros set editorial = null where id_libro = 9;
 select * from libros where editorial is null;
 
 -- Cuales son los libros que no tienen un autor registrado en la tabla auxiliar
-select * from LibroAutor where id_autor is null;
--- No se puede hacer insert que cumpla el select ya que en la creacion de la tabla auxiliar 
--- ambos campos deben de ser no nulos por lo que no deja hacer el insert
+select * from Libros where id_libro not in (select id_libro from LibroAutor);
 
 
 -- Inciso c)
