@@ -100,7 +100,7 @@ LENGTH(REPLACE(TRIM(nombre), ' ', ''))) = 1 and id_rol between 1 and 2;
 select * from usuarios where char_length(concat(nombre, ' ', primer_apellido, ' ', segundo_apellido)) = 30 and char_length(contrasena) >= 8;
 insert into usuarios (nombre, primer_apellido, segundo_apellido, email, telefono, fecha_nacimiento, contrasena, id_rol
 )
-values ('Jonathan', 'Fernández', 'Montenegros', 'jonathan.fernández@example.com', '5551234567', '1990-05-10', 'PassJonathan123', 3);
+values ('Jonathan', 'Fernández', 'Montenegros', 'jonathan.fernández@example.com', '5551234567', '1990-05-10', 'PassJonathan123', 2);
 select * from usuarios where char_length(concat(nombre, ' ', primer_apellido, ' ', segundo_apellido)) = 30 and char_length(contrasena) >= 8;
 
 
@@ -109,7 +109,7 @@ select * from usuarios where char_length(concat(nombre, ' ', primer_apellido, ' 
 select * from usuarios where nombre like 'Eduardo%' or nombre like '% Eduardo%' or nombre = 'Eduardo';
 insert into usuarios (nombre, primer_apellido, segundo_apellido, email, telefono, fecha_nacimiento, contrasena, id_rol
 )
-values ('Luis Eduardo', 'Fernández', 'Montenegros', 'luis.fernández@example.com', '5551234567', '1990-05-10', 'PasLuis123', 3);
+values ('Luis Eduardo', 'Fernández', 'Montenegros', 'luis.fernandez@example.com', '5551234567', '1990-05-10', 'PassLuis123', 3);
 select * from usuarios where nombre like 'Eduardo%' or nombre like '% Eduardo%' or nombre = 'Eduardo';
 
 -- Las personas que su segundo carácter sea una "d".
@@ -120,9 +120,65 @@ select * from usuarios where nombre not regexp '^[AEIOUaeiou]';
 
 -- Los que empiecen su nombre con una vocal y terminen con s.
 select * from usuarios where nombre regexp '^[AEIOUaeiou].*s$';
+insert into usuarios (nombre, primer_apellido, segundo_apellido, email, telefono, fecha_nacimiento, contrasena, id_rol
+)
+values ('Alexis', 'Hernández', 'Mendéz', 'alexis.hernandez@example.com', '5534567891', '1991-02-10', 'PassAlexis123', 3);
+select * from usuarios where nombre regexp '^[AEIOUaeiou].*s$';
 
+-- Los que su tercer carácter del nombre sea una G.
 select * from usuarios where nombre like '__G%';
 
+-- Los que su primer carácter en el apellido paterno sea 'E' y el 4 sea 'A'
+select * from usuarios where primer_apellido like 'E__A%';
+insert into usuarios (nombre, primer_apellido, segundo_apellido, email, telefono, fecha_nacimiento, contrasena, id_rol
+)
+values ('Luis', 'Edwards', null, 'luis.edwards@example.com', '5545678912', '1992-08-13', 'PassLuis123', 1);
+select * from usuarios where primer_apellido like 'E__A%';
+
+-- Los que tengan por lo menos una 'E' en su nombre.
+select * from usuarios where nombre like '%E%';
+
+-- Los que se llaman Eduardo y Cualquiera de sus apellidos empiece con 'C'
+select * from usuarios where nombre like 'Eduardo%' 
+and (primer_apellido like 'C%' or segundo_apellido like 'C%');
+insert into usuarios (nombre, primer_apellido, segundo_apellido, email, telefono, fecha_nacimiento, contrasena, id_rol
+)
+values ('Eduardo', 'Castro', null, 'eduardo.castro@example.com', '5556789123', '1995-10-24', 'PassEduardo123', 1);
+select * from usuarios where nombre like 'Eduardo%' 
+and (primer_apellido like 'C%' or segundo_apellido like 'C%');
+
+-- Las personas que su apellido materno empiece con la primera 
+-- mitad del alfabeto [A-M] pero que no empiecen ni con A ni con E
+select * from usuarios where segundo_apellido regexp '^[B-DF-Mb-df-m]';
+
+-- Las personas que su apellido paterno empiece con la segunda mitad del alfabeto [N-Z]
+select * from usuarios where primer_apellido regexp '^[N-Zn-z]';
+
+-- Obtener los libros cuyo título contenga la palabra "Historia".
+select * from libros where titulo like '%Historia%';
+insert into Libros (isbn, titulo, anio_publicacion, editorial, edicion, cantidad_total, cantidad_disponible, clasificacion)
+values
+('978-9-68-134266-1', 'La otra historia de México', 2006, 'Editorial Ariel', 1, 10, 7, 4);
+select * from libros where titulo like '%Historia%';
+
+-- Listar los usuarios cuyo apellido paterno termine con "ez".
+select * from usuarios where primer_apellido like '%ez';
+
+-- Seleccionar todos los usuarios cuyo correo electrónico sea de Gmail.
+select * from usuarios where email like '%@gmail.com';
+insert into usuarios (nombre, primer_apellido, segundo_apellido, email, telefono, fecha_nacimiento, contrasena, id_rol
+)
+values ('Raul', 'Rodriguéz', null, 'raul.rodriguez@gmail.com', '5551234567', '1998-12-24', 'PassRaul123', 2);
+select * from usuarios where email like '%@gmail.com';
+
+-- Consultar los libros cuya editorial contenga la palabra "Editores".
+select * from libros where editorial like '%Editores%';
+insert into libros (ISBN, titulo, anio_publicacion, editorial, edicion, cantidad_total, cantidad_disponible, clasificacion) 
+value ('978-607-00-1234-5', 'Introducción a la Programación', 2021, 'Alfa Editores Técnicos', '3', 10, 7, '005.13');
+select * from libros where editorial like '%Editores%';
+
+-- Listar los usuarios cuyos nombres contengan una vocal seguida de una "n".
+select * from usuarios where nombre regexp '[AEIOUaeiou]n';
 
 
 
