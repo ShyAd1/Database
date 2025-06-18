@@ -180,5 +180,15 @@ select * from libros where editorial like '%Editores%';
 -- Listar los usuarios cuyos nombres contengan una vocal seguida de una "n".
 select * from usuarios where nombre regexp '[AEIOUaeiou]n';
 
+-- Obtener todos los usuarios cuyos números de teléfono terminen en "00".
+select * from usuarios where telefono like '%00';
 
+-- Consultar los autores cuyo nombre contenga la letra "J" en cualquier parte (ya sea minúscula o mayúsculas).
+select * from autores where nombre_autor like '%J%' or nombre_autor like '%j%';
+
+-- Obtener los usuarios cuyo nombre contenga exactamente cinco caracteres.
+select * from usuarios where CHAR_LENGTH(nombre) = 5;
+
+-- Obtener los títulos de libros que contengan números en cualquier parte.
+select * from libros where titulo regexp '[0-9]';
 
