@@ -76,5 +76,97 @@ select * from prestamos where fecha_prestamo between
 date_sub(current_date, interval 1 year) and date_sub(current_date, interval 6 month);
 
 
+-- Inciso b)
+-- Muestra a las personas ordenados alfabéticamente por nombre.
+select * from usuarios order by nombre;
+
+-- Muestra las primeras 3 personas que son lectores
+select * from usuarios where id_rol = 3 order by nombre limit 3;
+
+-- Obtener los 10 usuarios más recientes registrados en el sistema:
+select * from usuarios order by fecha_registro desc limit 10;
+
+-- Listar los 5 libros más prestados en el sistema
+select libros.id_libro, libros.titulo, count(*) as veces_prestado from libros, prestamos
+where libros.id_libro = prestamos.id_libro group by libros.id_libro, libros.titulo
+order by veces_prestado desc limit 5;
+
+-- Listar los 10 libros publicados más recientemente
+select * from libros order by anio_publicacion desc limit 10;
+
+-- Mostrar las primeras 15 multas generadas en el sistema, ordenadas por fecha
+select * from multas order by fecha_multa asc limit 15;
+insert into multas (id_prestamo, monto, pagado, fecha_multa) values
+(1, 50.00, 0, '2024-12-01'),
+(2, 25.50, 1, '2024-11-25'),
+(3, 10.00, 1, '2024-11-30'),
+(4, 15.75, 0, '2024-12-10'),
+(5, 20.00, 1, '2024-11-20'),
+(6, 5.00, 0, '2024-12-03'),
+(7, 35.00, 1, '2024-12-04'),
+(8, 60.00, 0, '2024-11-18'),
+(9, 40.00, 1, '2024-12-08'),
+(10, 18.00, 0, '2024-12-05'),
+(11, 22.25, 0, '2024-11-28'),
+(12, 12.00, 1, '2024-12-02'),
+(13, 45.00, 0, '2024-11-30'),
+(14, 27.50, 1, '2024-11-27'),
+(15, 30.00, 0, '2024-12-06');
+select * from multas order by fecha_multa asc limit 15;
+
+-- Obtener los 5 autores con más libros registrados en el sistema
+select autores.id_autor, autores.nombre_autor, count(*) as libros_registrados from autores, libroautor
+where autores.id_autor = libroautor.id_autor group by autores.id_autor, autores.nombre_autor
+order by libros_registrados desc limit 5;
+
+-- Listar los 8 libros más antiguos disponibles en la biblioteca
+select * from libros order by anio_publicacion asc limit 8;
+
+-- Obtener los primeros 10 préstamos más recientes en el sistema
+select * from prestamos order by fecha_prestamo desc limit 10;
+
+-- Mostrar los 5 usuarios con las contraseñas más largas, ordenados de mayor a menor longitud
+select *, char_length(contrasena) from usuarios order by char_length(contrasena) desc limit 5;
+
+-- Obtener las primeras 10 editoriales con más libros publicados, ordenadas alfabéticamente
+select * from(select editorial, count(*) as libros_publicados from libros group by editorial
+order by libros_publicados desc limit 10) as top_editoriales order by editorial asc;
+
+-- Listar los 12 primeros libros clasificados con la puntuación más alta
+select * from libros order by clasificacion desc limit 12;
+
+-- Mostrar las 15 primeras devoluciones que se hicieron más rápidamente después del préstamo
+select d.id_devolucion, d.id_prestamo, p.id_usuario, p.id_libro, p.fecha_prestamo, 
+d.fecha_devolucion, datediff(d.fecha_devolucion, p.fecha_prestamo) AS dias_para_devolver
+from devoluciones d, prestamos p where d.id_prestamo = p.id_prestamo
+order by dias_para_devolver asc limit 15;
+
+-- Listar los 5 libros más prestados en los últimos 6 meses, ordenados por la cantidad de préstamos
+select libros.id_libro, libros.titulo, count(*) as veces_prestado from libros, prestamos
+where libros.id_libro = prestamos.id_libro and fecha_prestamo between date_sub(current_date, interval 6 month) 
+and current_date group by libros.id_libro, libros.titulo order by veces_prestado desc limit 5;
+insert into prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion_max, estado_prestamo) values
+(12, 1, '2025-05-15', '2025-05-29', 'devuelto'),
+(37, 2, '2025-06-01', '2025-06-15', 'pendiente'),
+(5, 4,  '2025-04-10', '2025-04-24', 'con retraso'),
+(23, 3, '2025-03-22', '2025-04-05', 'devuelto'),
+(58, 5, '2025-02-12', '2025-02-26', 'devuelto');
+select libros.id_libro, libros.titulo, count(*) as veces_prestado from libros, prestamos
+where libros.id_libro = prestamos.id_libro and fecha_prestamo between date_sub(current_date, interval 6 month) 
+and current_date group by libros.id_libro, libros.titulo order by veces_prestado desc limit 5;
+
+-- Inciso c)
+-- ¿Cuántas personas estan registradas de cada rol tenemos?
+-- Obtener la cantidad de préstamos por estado de préstamo (pendiente, retraso, devuelto)
+-- Obtener el número total de libros prestados por editorial
+-- Calcular la multa promedio por usuario para préstamos con estado retraso
+-- Mostrar el total de libros disponibles y prestados, agrupados por año de publicación
+-- Contar la cantidad de usuarios por rango de edad usando CASE y agrupar los resultados
+-- Calcular el promedio de días de retraso en devoluciones agrupado por el estado del préstamo
+-- Contar la cantidad de libros por clasificación (de 0 a 5 estrellas)
+-- Calcular el número de devoluciones por mes en el último año
+-- Mostrar el número de libros prestados en los últimos 6 meses, agrupados por editorial
+-- Calcular el número promedio de días que tarda en devolver los libros cada usuario
+
 
 
