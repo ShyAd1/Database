@@ -38,7 +38,7 @@ select lower(primer_apellido) from usuarios;
 select concat(upper(primer_apellido), ' ', segundo_apellido, ' ', nombre) from usuarios;
 
 -- Muestra el nombre de las personas con las E reemplazadas con el número 3.
-select replace(nombre, 'E', 3) from usuarios;
+select replace(replace(nombre, 'E', 3), 'e', 3) from usuarios;
 
 -- Muestra el nombre completo de las personas con las o reemplazados con el número 0 en una sola columna.
 select replace(concat(nombre, ' ', primer_apellido, ' ', segundo_apellido),'o', 0) from usuarios;
@@ -73,7 +73,7 @@ substring(nombre, 4)) from usuarios;
 select concat(substring(nombre, 1, 1), upper(substring(nombre, 2, 1)), 
 substring(nombre, 3, 1), upper(substring(nombre, 4, 1)), substring(nombre, 5)) from usuarios;
 
--- Convierte a mayúsculas el segundo y último carácter (Armando-->ArmandO)
+-- Convierte a mayúsculas el segundo y último carácter (Armando-->ARmandO)
 select concat(substring(nombre, 1, 1), upper(substring(nombre, 2, 1)), 
 substring(nombre, 3, char_length(nombre)-1), upper(substring(nombre, -1))) from usuarios;
 
@@ -97,11 +97,13 @@ LENGTH(REPLACE(TRIM(nombre), ' ', ''))) = 1 and id_rol between 1 and 2;
 
 -- Usuarios cuyo nombre completo (nombre, primer apellido, segundo 
 -- apellido) tenga exactamente 30 caracteres, y cuya contraseña tenga al menos 8 caracteres
-select * from usuarios where char_length(concat(nombre, ' ', primer_apellido, ' ', segundo_apellido)) = 30 and char_length(contrasena) >= 8;
+select * from usuarios 
+where char_length(concat(nombre, ' ', primer_apellido, ' ', segundo_apellido)) = 30 and char_length(contrasena) >= 8;
 insert into usuarios (nombre, primer_apellido, segundo_apellido, email, telefono, fecha_nacimiento, contrasena, id_rol
 )
 values ('Jonathan', 'Fernández', 'Montenegros', 'jonathan.fernández@example.com', '5551234567', '1990-05-10', 'PassJonathan123', 2);
-select * from usuarios where char_length(concat(nombre, ' ', primer_apellido, ' ', segundo_apellido)) = 30 and char_length(contrasena) >= 8;
+select * from usuarios 
+where char_length(concat(nombre, ' ', primer_apellido, ' ', segundo_apellido)) = 30 and char_length(contrasena) >= 8;
 
 
 -- Inciso b)
