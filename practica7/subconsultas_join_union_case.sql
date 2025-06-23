@@ -176,8 +176,8 @@ join usuarios u on p.id_usuario = u.id_usuario;
 -- Obtener una lista de todos los libros disponibles, incluyendo aquellos sin autor asignado o que no están prestados actualmente
 select l.*, a.nombre_autor from libros l left join libroautor la on l.id_libro = la.id_libro
 left join autores a on la.id_autor = a.id_autor
-left join prestamos p on l.id_libro = p.id_libro and p.estado_prestamo in ('pendiente', 'con retraso')
-where p.id_prestamo is null;
+where l.cantidad_disponible > 0 or l.id_libro not in ( select id_libro from prestamos
+where estado_prestamo in ('pendiente', 'con retraso'));
 
 -- Listar todas las multas de los préstamos, incluyendo los usuarios que las generaron, y mostrando préstamos sin multa si los hay
 select p.*, m.monto, u.nombre from prestamos p left join multas m on p.id_prestamo = m.id_prestamo 
