@@ -403,26 +403,26 @@ INSERT INTO GrupoAlumno (idGrupo, idEstudiante) VALUES
 (5, 40);
 
 INSERT INTO Viajes (nombreViaje, descripcion, fechaInicio, fechaFin, idDestino, idOrigen) VALUES 
-('Excursión a sitio cultural 1', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-03-06', '2024-03-10', 10, 40),
-('Excursión a sitio cultural 2', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-03-08', '2024-03-14', 22, 15),
-('Excursión a sitio cultural 3', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-05-09', '2024-05-14', 21, 12),
-('Excursión a sitio cultural 4', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2025-02-02', '2025-02-06', 26, 31),
-('Excursión a sitio cultural 5', NULL, '2025-01-02', '2025-01-08', 1, 14),
-('Excursión a sitio cultural 6', NULL, '2024-08-11', '2024-08-13', 8, 34),
-('Excursión a sitio cultural 7', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-06-16', '2024-06-21', 31, 7),
-('Excursión a sitio cultural 8', NULL, '2024-03-03', '2024-03-05', 13, 23),
-('Excursión a sitio cultural 9', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-12-26', '2024-12-28', 36, 1),
-('Excursión a sitio cultural 10', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-04-10', '2024-04-16', 24, 1),
-('Excursión a sitio cultural 11', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-10-08', '2024-10-13', 4, 18),
-('Excursión a sitio cultural 12', NULL, '2025-01-11', '2025-01-17', 18, 39),
-('Excursión a sitio cultural 13', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-01-25', '2024-01-28', 20, 38),
+('Excursión a sitio cultural 1', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-03-06', '2024-03-10', 10, 2),
+('Excursión a sitio cultural 2', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-03-08', '2024-03-14', 22, 7),
+('Excursión a sitio cultural 3', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-05-09', '2024-05-14', 21, 9),
+('Excursión a sitio cultural 4', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2025-02-02', '2025-02-06', 26, 11),
+('Excursión a sitio cultural 5', NULL, '2025-01-02', '2025-01-08', 1, 12),
+('Excursión a sitio cultural 6', NULL, '2024-08-11', '2024-08-13', 8, 14),
+('Excursión a sitio cultural 7', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-06-16', '2024-06-21', 31, 15),
+('Excursión a sitio cultural 8', NULL, '2024-03-03', '2024-03-05', 13, 16),
+('Excursión a sitio cultural 9', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-12-26', '2024-12-28', 36, 19),
+('Excursión a sitio cultural 10', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-04-10', '2024-04-16', 24, 23),
+('Excursión a sitio cultural 11', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-10-08', '2024-10-13', 4, 25),
+('Excursión a sitio cultural 12', NULL, '2025-01-11', '2025-01-17', 18, 28),
+('Excursión a sitio cultural 13', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-01-25', '2024-01-28', 20, 32),
 ('Excursión a sitio cultural 14', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-03-24', '2024-03-30', 29, 33),
-('Excursión a sitio cultural 15', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-04-21', '2024-04-23', 3, 2),
-('Excursión a sitio cultural 16', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-08-19', '2024-08-22', 30, 28),
-('Excursión a sitio cultural 17', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-10-10', '2024-10-13', 5, 34),
-('Excursión a sitio cultural 18', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-08-20', '2024-08-26', 17, 28),
-('Excursión a sitio cultural 19', NULL, '2024-02-14', '2024-02-18', 6, 9),
-('Excursión a sitio cultural 20', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-09-20', '2024-09-22', 27, 35);
+('Excursión a sitio cultural 15', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-04-21', '2024-04-23', 3, 34),
+('Excursión a sitio cultural 16', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-08-19', '2024-08-22', 30, 35),
+('Excursión a sitio cultural 17', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-10-10', '2024-10-13', 5, 37),
+('Excursión a sitio cultural 18', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-08-20', '2024-08-26', 17, 38),
+('Excursión a sitio cultural 19', NULL, '2024-02-14', '2024-02-18', 6, 39),
+('Excursión a sitio cultural 20', 'Visita educativa a museo y actividades culturales para estudiantes del grupo.', '2024-09-20', '2024-09-22', 27, 40);
 
 INSERT INTO DetallesViaje (costoTotal, comentarios, idViaje, idEstudiante) VALUES 
 (1005, 'Incluye transporte y entradas', 1, 9),
@@ -529,3 +529,64 @@ INSERT INTO DetallesViaje (costoTotal, comentarios, idViaje, idEstudiante) VALUE
 (1403, 'Incluye transporte y entradas', 20, 8),
 (3430, 'Incluye transporte y entradas', 20, 24),
 (3397, 'Incluye transporte y entradas', 20, 11);
+
+INSERT INTO DocentesACargo (idDetalle, idDocente) VALUES
+(1, 28),
+(1, 32),
+(2, 4),
+(2, 37),
+(3, 11),
+(3, 29),
+(4, 19),
+(4, 26),
+(5, 35),
+(5, 38),
+(6, 4),
+(6, 11),
+(7, 18),
+(7, 14),
+(8, 37),
+(8, 29),
+(9, 12),
+(9, 8),
+(10, 22),
+(10, 4),
+(11, 5),
+(11, 37),
+(12, 21),
+(12, 23),
+(13, 8),
+(13, 18),
+(14, 6),
+(14, 40),
+(15, 14),
+(15, 18),
+(16, 27),
+(16, 10),
+(17, 32),
+(17, 29),
+(18, 3),
+(18, 21),
+(19, 1),
+(19, 3),
+(20, 31),
+(20, 4);
+
+SELECT * FROM Lugares;
+SELECT * FROM Destinos;
+SELECT * FROM Origenes;
+SELECT * FROM Especialidades;
+SELECT * FROM Docentes;
+SELECT * FROM TelefonoDocentes;
+SELECT * FROM Autorizaciones;
+SELECT * FROM AutorizacionTelefono;
+SELECT * FROM Estudiantes;
+SELECT * FROM Pagos;
+SELECT * FROM Grupos;
+SELECT * FROM GrupoAlumno;
+SELECT * FROM Viajes;
+SELECT * FROM DetallesViaje;
+SELECT * FROM DocentesACargo;
+
+
+
